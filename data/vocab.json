@@ -1,0 +1,758 @@
+[
+  {
+    "id": "cafezinho",
+    "pt": "cafezinho",
+    "en": "little coffee",
+    "phonetic": "[ka-fei-'zi-ɲu]",
+    "category": "drinks",
+    "example_pt": "Vou tomar um cafezinho agora.",
+    "example_en": "I'm going to have a little coffee now.",
+    "due": "2026-05-06",
+    "interval": 4,
+    "times_seen": 0,
+    "type": "word",
+    "tags": [
+      "drinks"
+    ],
+    "register": "neutral",
+    "usage_note": "Useful for drinks situations in Rio."
+  },
+  {
+    "id": "padaria",
+    "pt": "padaria",
+    "en": "bakery",
+    "phonetic": "[pa-da-'ri-a]",
+    "category": "market",
+    "example_pt": "A padaria abre as seis da manha.",
+    "example_en": "The bakery opens at six in the morning.",
+    "due": "2026-05-06",
+    "interval": 4,
+    "times_seen": 0,
+    "type": "word",
+    "tags": [
+      "market"
+    ],
+    "register": "neutral",
+    "usage_note": "Useful for market situations in Rio."
+  },
+  {
+    "id": "mercado",
+    "pt": "mercado",
+    "en": "market",
+    "phonetic": "[mer-'ka-du]",
+    "category": "market",
+    "example_pt": "Vou ao mercado comprar frutas.",
+    "example_en": "I'm going to the market to buy fruit.",
+    "due": "2026-05-06",
+    "interval": 4,
+    "times_seen": 0,
+    "type": "word",
+    "tags": [
+      "market"
+    ],
+    "register": "neutral",
+    "usage_note": "Useful for market situations in Rio."
+  },
+  {
+    "id": "pao",
+    "pt": "pao",
+    "en": "bread",
+    "phonetic": "['paw]",
+    "category": "food",
+    "example_pt": "Tem pao fresquinho na padaria.",
+    "example_en": "There is fresh bread at the bakery.",
+    "due": "2026-05-06",
+    "interval": 4,
+    "times_seen": 0,
+    "type": "word",
+    "tags": [
+      "food"
+    ],
+    "register": "neutral",
+    "usage_note": "Useful for food situations in Rio."
+  },
+  {
+    "id": "conta",
+    "pt": "a conta",
+    "en": "the bill",
+    "phonetic": "[a 'kon-ta]",
+    "category": "restaurant",
+    "example_pt": "Pode trazer a conta, por favor?",
+    "example_en": "Can you bring the bill, please?",
+    "due": "2026-05-06",
+    "interval": 4,
+    "times_seen": 0,
+    "type": "phrase",
+    "tags": [
+      "restaurant"
+    ],
+    "register": "neutral",
+    "usage_note": "Useful for restaurant situations in Rio."
+  },
+  {
+    "id": "cardapio",
+    "pt": "cardapio",
+    "en": "menu",
+    "phonetic": "[kar-'da-piu]",
+    "category": "restaurant",
+    "example_pt": "Posso ver o cardapio?",
+    "example_en": "Can I see the menu?",
+    "due": "2026-05-06",
+    "interval": 4,
+    "times_seen": 0,
+    "type": "word",
+    "tags": [
+      "restaurant"
+    ],
+    "register": "neutral",
+    "usage_note": "Useful for restaurant situations in Rio."
+  },
+  {
+    "id": "garcom",
+    "pt": "garcom",
+    "en": "waiter",
+    "phonetic": "[gar-'som]",
+    "category": "restaurant",
+    "example_pt": "Chama o garcom, por favor.",
+    "example_en": "Call the waiter, please.",
+    "due": "2026-05-06",
+    "interval": 4,
+    "times_seen": 0,
+    "type": "word",
+    "tags": [
+      "restaurant"
+    ],
+    "register": "neutral",
+    "usage_note": "Useful for restaurant situations in Rio."
+  },
+  {
+    "id": "feijoada",
+    "pt": "feijoada",
+    "en": "Brazilian bean stew",
+    "phonetic": "[fei-'jo-a-da]",
+    "category": "food",
+    "example_pt": "Feijoada e servida aos sabados.",
+    "example_en": "Feijoada is served on Saturdays.",
+    "due": "2026-05-06",
+    "interval": 4,
+    "times_seen": 0,
+    "type": "word",
+    "tags": [
+      "food"
+    ],
+    "register": "neutral",
+    "usage_note": "Useful for food situations in Rio."
+  },
+  {
+    "id": "acai",
+    "pt": "acai",
+    "en": "acai berry bowl",
+    "phonetic": "[a-sa-'i]",
+    "category": "food",
+    "example_pt": "Quero um acai com banana.",
+    "example_en": "I want an acai with banana.",
+    "due": "2026-05-06",
+    "interval": 4,
+    "times_seen": 0,
+    "type": "word",
+    "tags": [
+      "food"
+    ],
+    "register": "neutral",
+    "usage_note": "Useful for food situations in Rio."
+  },
+  {
+    "id": "suco",
+    "pt": "suco",
+    "en": "juice",
+    "phonetic": "['su-ku]",
+    "category": "drinks",
+    "example_pt": "Um suco de laranja, por favor.",
+    "example_en": "An orange juice, please.",
+    "due": "2026-05-06",
+    "interval": 4,
+    "times_seen": 0,
+    "type": "word",
+    "tags": [
+      "drinks"
+    ],
+    "register": "neutral",
+    "usage_note": "Useful for drinks situations in Rio."
+  },
+  {
+    "id": "agua",
+    "pt": "agua",
+    "en": "water",
+    "phonetic": "['a-gwa]",
+    "category": "drinks",
+    "example_pt": "Pode me trazer agua?",
+    "example_en": "Can you bring me water?",
+    "due": "2026-05-06",
+    "interval": 4,
+    "times_seen": 0,
+    "type": "word",
+    "tags": [
+      "drinks"
+    ],
+    "register": "neutral",
+    "usage_note": "Useful for drinks situations in Rio."
+  },
+  {
+    "id": "cerveja",
+    "pt": "cerveja",
+    "en": "beer",
+    "phonetic": "[ser-'ve-ja]",
+    "category": "drinks",
+    "example_pt": "Duas cervejas, por favor.",
+    "example_en": "Two beers, please.",
+    "due": "2026-05-06",
+    "interval": 4,
+    "times_seen": 0,
+    "type": "word",
+    "tags": [
+      "drinks"
+    ],
+    "register": "neutral",
+    "usage_note": "Useful for drinks situations in Rio."
+  },
+  {
+    "id": "laranja",
+    "pt": "laranja",
+    "en": "orange",
+    "phonetic": "[la-'ran-ja]",
+    "category": "food",
+    "example_pt": "Esse suco de laranja esta otimo.",
+    "example_en": "This orange juice is great.",
+    "due": "2026-05-06",
+    "interval": 4,
+    "times_seen": 0,
+    "type": "word",
+    "tags": [
+      "food"
+    ],
+    "register": "neutral",
+    "usage_note": "Useful for food situations in Rio."
+  },
+  {
+    "id": "banana",
+    "pt": "banana",
+    "en": "banana",
+    "phonetic": "[ba-'na-na]",
+    "category": "food",
+    "example_pt": "Coloca banana no acai.",
+    "example_en": "Put banana in the acai.",
+    "due": "2026-05-06",
+    "interval": 4,
+    "times_seen": 0,
+    "type": "word",
+    "tags": [
+      "food"
+    ],
+    "register": "neutral",
+    "usage_note": "Useful for food situations in Rio."
+  },
+  {
+    "id": "queijo",
+    "pt": "queijo",
+    "en": "cheese",
+    "phonetic": "['kei-ju]",
+    "category": "food",
+    "example_pt": "Quero pao com queijo.",
+    "example_en": "I want bread with cheese.",
+    "due": "2026-05-06",
+    "interval": 4,
+    "times_seen": 0,
+    "type": "word",
+    "tags": [
+      "food"
+    ],
+    "register": "neutral",
+    "usage_note": "Useful for food situations in Rio."
+  },
+  {
+    "id": "presunto",
+    "pt": "presunto",
+    "en": "ham",
+    "phonetic": "[pre-'zun-tu]",
+    "category": "food",
+    "example_pt": "Tem sanduiche de queijo e presunto?",
+    "example_en": "Do you have a ham and cheese sandwich?",
+    "due": "2026-05-06",
+    "interval": 4,
+    "times_seen": 0,
+    "type": "word",
+    "tags": [
+      "food"
+    ],
+    "register": "neutral",
+    "usage_note": "Useful for food situations in Rio."
+  },
+  {
+    "id": "misto-quente",
+    "pt": "misto quente",
+    "en": "grilled ham and cheese",
+    "phonetic": "['mis-tu 'ken-chi]",
+    "category": "restaurant",
+    "example_pt": "Vou querer um misto quente.",
+    "example_en": "I'll have a grilled ham and cheese.",
+    "due": "2026-05-06",
+    "interval": 4,
+    "times_seen": 0,
+    "type": "phrase",
+    "tags": [
+      "restaurant"
+    ],
+    "register": "neutral",
+    "usage_note": "Useful for restaurant situations in Rio."
+  },
+  {
+    "id": "coxinha",
+    "pt": "coxinha",
+    "en": "chicken croquette",
+    "phonetic": "[ko-'shi-nya]",
+    "category": "food",
+    "example_pt": "A coxinha daqui e famosa.",
+    "example_en": "The chicken croquette here is famous.",
+    "due": "2026-05-06",
+    "interval": 4,
+    "times_seen": 0,
+    "type": "word",
+    "tags": [
+      "food"
+    ],
+    "register": "neutral",
+    "usage_note": "Useful for food situations in Rio."
+  },
+  {
+    "id": "pastel",
+    "pt": "pastel",
+    "en": "fried pastry",
+    "phonetic": "[pas-'tew]",
+    "category": "food",
+    "example_pt": "Quero um pastel de queijo.",
+    "example_en": "I want a cheese pastel.",
+    "due": "2026-05-06",
+    "interval": 4,
+    "times_seen": 0,
+    "type": "word",
+    "tags": [
+      "food"
+    ],
+    "register": "neutral",
+    "usage_note": "Useful for food situations in Rio."
+  },
+  {
+    "id": "tapioca",
+    "pt": "tapioca",
+    "en": "tapioca crepe",
+    "phonetic": "[ta-pi-'o-ka]",
+    "category": "food",
+    "example_pt": "Tapioca com coco e muito boa.",
+    "example_en": "Tapioca with coconut is very good.",
+    "due": "2026-05-06",
+    "interval": 4,
+    "times_seen": 0,
+    "type": "word",
+    "tags": [
+      "food"
+    ],
+    "register": "neutral",
+    "usage_note": "Useful for food situations in Rio."
+  },
+  {
+    "id": "arroz",
+    "pt": "arroz",
+    "en": "rice",
+    "phonetic": "[a-'hos]",
+    "category": "food",
+    "example_pt": "O prato vem com arroz e feijao.",
+    "example_en": "The dish comes with rice and beans.",
+    "due": "2026-05-06",
+    "interval": 4,
+    "times_seen": 0,
+    "type": "word",
+    "tags": [
+      "food"
+    ],
+    "register": "neutral",
+    "usage_note": "Useful for food situations in Rio."
+  },
+  {
+    "id": "feijao",
+    "pt": "feijao",
+    "en": "beans",
+    "phonetic": "[fei-'jaw]",
+    "category": "food",
+    "example_pt": "Feijao preto e comum no Rio.",
+    "example_en": "Black beans are common in Rio.",
+    "due": "2026-05-06",
+    "interval": 4,
+    "times_seen": 0,
+    "type": "word",
+    "tags": [
+      "food"
+    ],
+    "register": "neutral",
+    "usage_note": "Useful for food situations in Rio."
+  },
+  {
+    "id": "frango",
+    "pt": "frango",
+    "en": "chicken",
+    "phonetic": "['fran-gu]",
+    "category": "food",
+    "example_pt": "Tem frango grelhado hoje?",
+    "example_en": "Is there grilled chicken today?",
+    "due": "2026-05-06",
+    "interval": 4,
+    "times_seen": 0,
+    "type": "word",
+    "tags": [
+      "food"
+    ],
+    "register": "neutral",
+    "usage_note": "Useful for food situations in Rio."
+  },
+  {
+    "id": "carne",
+    "pt": "carne",
+    "en": "meat",
+    "phonetic": "['kar-ni]",
+    "category": "food",
+    "example_pt": "Eu nao como muita carne.",
+    "example_en": "I do not eat much meat.",
+    "due": "2026-05-06",
+    "interval": 4,
+    "times_seen": 0,
+    "type": "word",
+    "tags": [
+      "food"
+    ],
+    "register": "neutral",
+    "usage_note": "Useful for food situations in Rio."
+  },
+  {
+    "id": "peixe",
+    "pt": "peixe",
+    "en": "fish",
+    "phonetic": "['pei-shi]",
+    "category": "food",
+    "example_pt": "O peixe esta fresco.",
+    "example_en": "The fish is fresh.",
+    "due": "2026-05-06",
+    "interval": 4,
+    "times_seen": 0,
+    "type": "word",
+    "tags": [
+      "food"
+    ],
+    "register": "neutral",
+    "usage_note": "Useful for food situations in Rio."
+  },
+  {
+    "id": "salada",
+    "pt": "salada",
+    "en": "salad",
+    "phonetic": "[sa-'la-da]",
+    "category": "food",
+    "example_pt": "Quero uma salada pequena.",
+    "example_en": "I want a small salad.",
+    "due": "2026-05-06",
+    "interval": 4,
+    "times_seen": 0,
+    "type": "word",
+    "tags": [
+      "food"
+    ],
+    "register": "neutral",
+    "usage_note": "Useful for food situations in Rio."
+  },
+  {
+    "id": "batata",
+    "pt": "batata",
+    "en": "potato",
+    "phonetic": "[ba-'ta-ta]",
+    "category": "food",
+    "example_pt": "Tem batata frita?",
+    "example_en": "Do you have fries?",
+    "due": "2026-05-06",
+    "interval": 4,
+    "times_seen": 0,
+    "type": "word",
+    "tags": [
+      "food"
+    ],
+    "register": "neutral",
+    "usage_note": "Useful for food situations in Rio."
+  },
+  {
+    "id": "sobremesa",
+    "pt": "sobremesa",
+    "en": "dessert",
+    "phonetic": "[so-bre-'me-za]",
+    "category": "restaurant",
+    "example_pt": "Qual e a sobremesa de hoje?",
+    "example_en": "What is today's dessert?",
+    "due": "2026-05-06",
+    "interval": 4,
+    "times_seen": 0,
+    "type": "word",
+    "tags": [
+      "restaurant"
+    ],
+    "register": "neutral",
+    "usage_note": "Useful for restaurant situations in Rio."
+  },
+  {
+    "id": "prato-feito",
+    "pt": "prato feito",
+    "en": "set lunch plate",
+    "phonetic": "['pra-tu 'fei-tu]",
+    "category": "restaurant",
+    "example_pt": "O prato feito vem com arroz e feijao.",
+    "example_en": "The set plate comes with rice and beans.",
+    "due": "2026-05-06",
+    "interval": 4,
+    "times_seen": 0,
+    "type": "phrase",
+    "tags": [
+      "restaurant"
+    ],
+    "register": "neutral",
+    "usage_note": "Useful for restaurant situations in Rio."
+  },
+  {
+    "id": "quentinha",
+    "pt": "quentinha",
+    "en": "takeout meal box",
+    "phonetic": "[ken-'chi-nya]",
+    "category": "restaurant",
+    "example_pt": "Vou levar uma quentinha.",
+    "example_en": "I'll take a meal box to go.",
+    "due": "2026-05-06",
+    "interval": 4,
+    "times_seen": 0,
+    "type": "word",
+    "tags": [
+      "restaurant"
+    ],
+    "register": "neutral",
+    "usage_note": "Useful for restaurant situations in Rio."
+  },
+  {
+    "id": "porcao",
+    "pt": "porcao",
+    "en": "portion",
+    "phonetic": "[por-'saw]",
+    "category": "restaurant",
+    "example_pt": "A porcao de batata serve duas pessoas.",
+    "example_en": "The portion of fries serves two people.",
+    "due": "2026-05-06",
+    "interval": 4,
+    "times_seen": 0,
+    "type": "word",
+    "tags": [
+      "restaurant"
+    ],
+    "register": "neutral",
+    "usage_note": "Useful for restaurant situations in Rio."
+  },
+  {
+    "id": "mesa",
+    "pt": "mesa",
+    "en": "table",
+    "phonetic": "['me-za]",
+    "category": "restaurant",
+    "example_pt": "Tem mesa para dois?",
+    "example_en": "Do you have a table for two?",
+    "due": "2026-05-06",
+    "interval": 4,
+    "times_seen": 0,
+    "type": "word",
+    "tags": [
+      "restaurant"
+    ],
+    "register": "neutral",
+    "usage_note": "Useful for restaurant situations in Rio."
+  },
+  {
+    "id": "guardanapo",
+    "pt": "guardanapo",
+    "en": "napkin",
+    "phonetic": "[gwar-da-'na-pu]",
+    "category": "restaurant",
+    "example_pt": "Pode trazer um guardanapo?",
+    "example_en": "Can you bring a napkin?",
+    "due": "2026-05-06",
+    "interval": 4,
+    "times_seen": 0,
+    "type": "word",
+    "tags": [
+      "restaurant"
+    ],
+    "register": "neutral",
+    "usage_note": "Useful for restaurant situations in Rio."
+  },
+  {
+    "id": "talher",
+    "pt": "talher",
+    "en": "cutlery",
+    "phonetic": "[ta-'lyer]",
+    "category": "restaurant",
+    "example_pt": "Falta um talher na mesa.",
+    "example_en": "There is a piece of cutlery missing at the table.",
+    "due": "2026-05-06",
+    "interval": 4,
+    "times_seen": 0,
+    "type": "word",
+    "tags": [
+      "restaurant"
+    ],
+    "register": "neutral",
+    "usage_note": "Useful for restaurant situations in Rio."
+  },
+  {
+    "id": "sacola",
+    "pt": "sacola",
+    "en": "bag",
+    "phonetic": "[sa-'ko-la]",
+    "category": "market",
+    "example_pt": "Precisa de sacola?",
+    "example_en": "Do you need a bag?",
+    "due": "2026-05-06",
+    "interval": 4,
+    "times_seen": 0,
+    "type": "word",
+    "tags": [
+      "market"
+    ],
+    "register": "neutral",
+    "usage_note": "Useful for market situations in Rio."
+  },
+  {
+    "id": "caixa",
+    "pt": "caixa",
+    "en": "cashier",
+    "phonetic": "['kai-sha]",
+    "category": "market",
+    "example_pt": "O caixa fica ali na frente.",
+    "example_en": "The cashier is over there in front.",
+    "due": "2026-05-06",
+    "interval": 4,
+    "times_seen": 0,
+    "type": "word",
+    "tags": [
+      "market"
+    ],
+    "register": "neutral",
+    "usage_note": "Useful for market situations in Rio."
+  },
+  {
+    "id": "troco",
+    "pt": "troco",
+    "en": "change",
+    "phonetic": "['tro-ku]",
+    "category": "market",
+    "example_pt": "Pode ficar com o troco.",
+    "example_en": "You can keep the change.",
+    "due": "2026-05-06",
+    "interval": 4,
+    "times_seen": 0,
+    "type": "word",
+    "tags": [
+      "market"
+    ],
+    "register": "neutral",
+    "usage_note": "Useful for market situations in Rio."
+  },
+  {
+    "id": "preco",
+    "pt": "preco",
+    "en": "price",
+    "phonetic": "['pre-su]",
+    "category": "market",
+    "example_pt": "Qual e o preco desse queijo?",
+    "example_en": "What is the price of this cheese?",
+    "due": "2026-05-06",
+    "interval": 4,
+    "times_seen": 0,
+    "type": "word",
+    "tags": [
+      "market"
+    ],
+    "register": "neutral",
+    "usage_note": "Useful for market situations in Rio."
+  },
+  {
+    "id": "barato",
+    "pt": "barato",
+    "en": "cheap",
+    "phonetic": "[ba-'ra-tu]",
+    "category": "market",
+    "example_pt": "Esse mercado e mais barato.",
+    "example_en": "This market is cheaper.",
+    "due": "2026-05-06",
+    "interval": 4,
+    "times_seen": 0,
+    "type": "word",
+    "tags": [
+      "market"
+    ],
+    "register": "neutral",
+    "usage_note": "Useful for market situations in Rio."
+  },
+  {
+    "id": "caro",
+    "pt": "caro",
+    "en": "expensive",
+    "phonetic": "['ka-ru]",
+    "category": "market",
+    "example_pt": "Achei esse restaurante caro.",
+    "example_en": "I thought this restaurant was expensive.",
+    "due": "2026-05-06",
+    "interval": 4,
+    "times_seen": 0,
+    "type": "word",
+    "tags": [
+      "market"
+    ],
+    "register": "neutral",
+    "usage_note": "Useful for market situations in Rio."
+  },
+  {
+    "id": "sem-acucar",
+    "pt": "sem acucar",
+    "en": "without sugar",
+    "phonetic": "[sem a-'su-kar]",
+    "category": "drinks",
+    "example_pt": "Quero cafe sem acucar.",
+    "example_en": "I want coffee without sugar.",
+    "due": "2026-05-06",
+    "interval": 4,
+    "times_seen": 0,
+    "type": "phrase",
+    "tags": [
+      "drinks"
+    ],
+    "register": "neutral",
+    "usage_note": "Useful for drinks situations in Rio."
+  },
+  {
+    "id": "gelado",
+    "pt": "gelado",
+    "en": "cold",
+    "phonetic": "[je-'la-du]",
+    "category": "drinks",
+    "example_pt": "A agua esta gelada.",
+    "example_en": "The water is cold.",
+    "due": "2026-05-06",
+    "interval": 4,
+    "times_seen": 0,
+    "type": "word",
+    "tags": [
+      "drinks"
+    ],
+    "register": "neutral",
+    "usage_note": "Useful for drinks situations in Rio."
+  }
+]

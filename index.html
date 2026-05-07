@@ -1,0 +1,1530 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f8f7f2">
+  <title>Fala Rio - Portuguese Coach</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@650;750;850&family=Nunito:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #f8f7f2;
+      --surface: #ffffff;
+      --ink: #242633;
+      --muted: #75798a;
+      --line: #e8e5dc;
+      --charcoal: #31323a;
+      --charcoal-2: #42444f;
+      --lavender: #6863ee;
+      --lavender-soft: #eceafe;
+      --mint: #c9f3e6;
+      --mint-ink: #1e6855;
+      --peach: #ffe7d8;
+      --peach-ink: #94513d;
+      --butter: #ffd45c;
+      --rose: #f8d9df;
+      --blue: #dfe8ff;
+      --danger: #df4d5d;
+      --shadow: 0 22px 54px rgba(38, 39, 52, .12);
+      --soft-shadow: 0 12px 30px rgba(38, 39, 52, .08);
+      --r: 18px;
+      --rl: 28px;
+      --pill: 999px;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { min-height: 100%; }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top left, rgba(255, 212, 92, .18), transparent 28rem),
+        radial-gradient(circle at bottom right, rgba(104, 99, 238, .14), transparent 26rem),
+        var(--paper);
+      color: var(--ink);
+      font-family: "Nunito", ui-rounded, system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    button, input, textarea { font: inherit; }
+    button { border: 0; cursor: pointer; }
+    input, textarea { color: var(--ink); }
+
+    #app {
+      min-height: 100vh;
+      padding: 18px 14px 104px;
+    }
+    #app.fullscreen { padding: 0; }
+    .shell {
+      width: min(100%, 480px);
+      margin: 0 auto;
+    }
+    .wide-shell {
+      width: min(100%, 1040px);
+      margin: 0 auto;
+    }
+    .screen { animation: rise .24s ease both; }
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: none; }
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 22px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+    .brand-mark {
+      width: 46px;
+      height: 46px;
+      border-radius: 18px;
+      background: var(--charcoal);
+      color: var(--butter);
+      display: grid;
+      place-items: center;
+      font-size: 1.3rem;
+      box-shadow: 0 8px 18px rgba(38, 39, 52, .18);
+      flex: 0 0 auto;
+    }
+    .eyebrow {
+      color: var(--muted);
+      font-size: .8rem;
+      font-weight: 800;
+      line-height: 1.1;
+    }
+    .brand-title {
+      font-family: "Fraunces", Georgia, serif;
+      font-size: 1.16rem;
+      font-weight: 850;
+      line-height: 1.05;
+    }
+    .icon-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 16px;
+      background: var(--surface);
+      color: var(--ink);
+      display: grid;
+      place-items: center;
+      box-shadow: var(--soft-shadow);
+      font-size: 1.05rem;
+    }
+
+    .section-label {
+      margin: 24px 0 10px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      font-size: .72rem;
+      font-weight: 900;
+    }
+    .title {
+      font-family: "Fraunces", Georgia, serif;
+      font-size: clamp(2rem, 7vw, 3.1rem);
+      line-height: .98;
+      margin: 10px 0 16px;
+      letter-spacing: 0;
+    }
+    .subtitle {
+      color: var(--muted);
+      font-size: .98rem;
+      line-height: 1.45;
+      margin: 0;
+    }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--rl);
+      box-shadow: var(--soft-shadow);
+    }
+    .primary-btn, .secondary-btn, .ghost-btn {
+      min-height: 52px;
+      border-radius: 18px;
+      padding: 0 18px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      font-weight: 900;
+      transition: transform .14s ease, box-shadow .14s ease, background .14s ease;
+      white-space: nowrap;
+    }
+    .primary-btn {
+      background: var(--lavender);
+      color: #fff;
+      box-shadow: 0 8px 0 #4d49c8;
+    }
+    .primary-btn:active { transform: translateY(5px); box-shadow: 0 3px 0 #4d49c8; }
+    .secondary-btn {
+      background: var(--surface);
+      color: var(--ink);
+      border: 1px solid var(--line);
+      box-shadow: 0 6px 0 #ddd8ca;
+    }
+    .secondary-btn:active { transform: translateY(4px); box-shadow: 0 2px 0 #ddd8ca; }
+    .ghost-btn {
+      background: rgba(255,255,255,.64);
+      color: var(--ink);
+      border: 1px solid rgba(36,38,51,.08);
+    }
+    .full { width: 100%; }
+    .tiny-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border-radius: var(--pill);
+      background: rgba(255,255,255,.16);
+      border: 1px solid rgba(255,255,255,.18);
+      color: rgba(255,255,255,.86);
+      padding: 6px 10px;
+      font-size: .76rem;
+      font-weight: 900;
+    }
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      border-radius: var(--pill);
+      padding: 7px 11px;
+      font-size: .75rem;
+      font-weight: 900;
+      background: var(--lavender-soft);
+      color: var(--lavender);
+      white-space: nowrap;
+    }
+    .chip.mint { background: var(--mint); color: var(--mint-ink); }
+    .chip.peach { background: var(--peach); color: var(--peach-ink); }
+    .chip.blue { background: var(--blue); color: #39528d; }
+
+    .continue-card {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(145deg, var(--charcoal), #252630);
+      color: #fff;
+      border-radius: 32px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+    .continue-card::after {
+      content: "";
+      position: absolute;
+      right: -42px;
+      top: -48px;
+      width: 150px;
+      height: 150px;
+      border-radius: 45px;
+      transform: rotate(18deg);
+      background: rgba(255, 212, 92, .92);
+    }
+    .continue-card > * { position: relative; z-index: 1; }
+    .continue-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 22px;
+    }
+    .continue-title {
+      font-family: "Fraunces", Georgia, serif;
+      font-size: 1.7rem;
+      line-height: 1.05;
+      margin: 0 0 8px;
+    }
+    .continue-copy {
+      color: rgba(255,255,255,.7);
+      margin: 0;
+      line-height: 1.38;
+      max-width: 270px;
+    }
+    .meter-ring {
+      width: 66px;
+      height: 66px;
+      border-radius: 50%;
+      flex: 0 0 auto;
+      display: grid;
+      place-items: center;
+      background: conic-gradient(var(--lavender) var(--pct), rgba(255,255,255,.12) 0);
+    }
+    .meter-ring span {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: var(--charcoal-2);
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      color: #fff;
+      font-size: .9rem;
+    }
+    .continue-art {
+      height: 130px;
+      border-radius: 24px;
+      background:
+        linear-gradient(135deg, rgba(255,212,92,.95), rgba(255,146,110,.9)),
+        repeating-linear-gradient(45deg, rgba(36,38,51,.12) 0 2px, transparent 2px 14px);
+      border: 1px solid rgba(255,255,255,.14);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 8px 0 20px;
+      color: #733c1c;
+      font-family: "Fraunces", Georgia, serif;
+      font-size: 2rem;
+      font-weight: 850;
+      letter-spacing: 0;
+      text-align: center;
+      padding: 18px;
+    }
+    .today-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .task-card {
+      border-radius: 26px;
+      padding: 18px;
+      min-height: 146px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border: 1px solid rgba(36,38,51,.06);
+      box-shadow: var(--soft-shadow);
+      text-align: left;
+      color: var(--ink);
+    }
+    .task-card h3 {
+      margin: 0 0 4px;
+      font-size: 1.02rem;
+      line-height: 1.18;
+    }
+    .task-card p {
+      margin: 0;
+      color: rgba(36,38,51,.62);
+      line-height: 1.32;
+      font-size: .84rem;
+      font-weight: 700;
+    }
+    .task-icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.6);
+      display: grid;
+      place-items: center;
+      font-size: 1.35rem;
+      margin-bottom: 14px;
+    }
+    .task-card.mint { background: var(--mint); }
+    .task-card.peach { background: var(--peach); }
+    .task-card.rose { background: var(--rose); }
+    .task-card.blue { background: var(--blue); }
+
+    .nav {
+      position: fixed;
+      left: 50%;
+      bottom: 14px;
+      transform: translateX(-50%);
+      width: min(calc(100% - 28px), 430px);
+      height: 74px;
+      background: #33333d;
+      border-radius: 30px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 6px;
+      padding: 9px;
+      z-index: 30;
+      box-shadow: 0 18px 40px rgba(30,31,40,.26);
+    }
+    .nav-btn {
+      border-radius: 22px;
+      background: transparent;
+      color: #9295a6;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2px;
+      font-size: .66rem;
+      font-weight: 900;
+      letter-spacing: 0;
+    }
+    .nav-btn span { font-size: 1.14rem; line-height: 1; }
+    .nav-btn.active {
+      background: var(--lavender);
+      color: #fff;
+    }
+
+    .deck-header, .simple-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+    .back-btn {
+      min-width: 44px;
+      height: 44px;
+      border-radius: 16px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      box-shadow: var(--soft-shadow);
+      color: var(--ink);
+      font-weight: 900;
+    }
+    .phrase-card {
+      padding: 28px 22px;
+      text-align: center;
+      min-height: 370px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+    .phrase-word {
+      font-family: "Fraunces", Georgia, serif;
+      color: var(--lavender);
+      font-size: clamp(2.4rem, 12vw, 4rem);
+      line-height: .95;
+      margin: 8px 0 0;
+      overflow-wrap: anywhere;
+    }
+    .phrase-meaning {
+      color: var(--ink);
+      font-weight: 900;
+      font-size: 1.25rem;
+    }
+    .pron-row {
+      background: #f0f0f0;
+      border-radius: 20px;
+      min-height: 58px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 16px;
+      color: var(--ink);
+      font-weight: 900;
+      text-align: left;
+    }
+    .sentence-box {
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 18px;
+      min-height: 92px;
+      display: grid;
+      place-items: center;
+      color: var(--muted);
+      line-height: 1.38;
+    }
+    .phrase-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 16px;
+    }
+    .phrase-bank {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .bank-token {
+      border-radius: 14px;
+      background: var(--lavender-soft);
+      color: var(--ink);
+      padding: 10px 14px;
+      font-weight: 900;
+    }
+
+    .scenario-list, .ready-list, .saved-list {
+      display: grid;
+      gap: 12px;
+    }
+    .row-card {
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-align: left;
+      width: 100%;
+      color: var(--ink);
+    }
+    .row-icon {
+      width: 54px;
+      height: 54px;
+      border-radius: 20px;
+      background: var(--lavender-soft);
+      color: var(--lavender);
+      display: grid;
+      place-items: center;
+      font-size: 1.45rem;
+      flex: 0 0 auto;
+    }
+    .row-body { flex: 1; min-width: 0; }
+    .row-title {
+      font-weight: 900;
+      line-height: 1.15;
+      margin-bottom: 4px;
+    }
+    .row-sub {
+      color: var(--muted);
+      font-size: .86rem;
+      line-height: 1.3;
+      font-weight: 700;
+    }
+    .row-meta {
+      color: var(--lavender);
+      font-weight: 900;
+      font-size: .82rem;
+      flex: 0 0 auto;
+    }
+
+    .speaking-wrap {
+      min-height: 100vh;
+      background: var(--paper);
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+    }
+    .speaking-top {
+      padding: 16px;
+      border-bottom: 1px solid var(--line);
+      background: rgba(248,247,242,.9);
+      backdrop-filter: blur(16px);
+      position: sticky;
+      top: 0;
+      z-index: 2;
+    }
+    .speaking-head {
+      width: min(100%, 920px);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+    .speaking-title {
+      font-weight: 900;
+      text-align: center;
+      line-height: 1.15;
+    }
+    .listen-state {
+      color: var(--muted);
+      font-size: .78rem;
+      font-weight: 900;
+      margin-top: 3px;
+    }
+    .chat {
+      width: min(100%, 920px);
+      margin: 0 auto;
+      padding: 18px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      overflow-y: auto;
+    }
+    .bubble-row { display: flex; }
+    .bubble-row.user { justify-content: flex-end; }
+    .bubble {
+      max-width: min(76%, 560px);
+      border-radius: 24px;
+      padding: 14px 16px;
+      line-height: 1.43;
+      box-shadow: var(--soft-shadow);
+    }
+    .bubble.tutor {
+      background: var(--charcoal);
+      color: #fff;
+      border-bottom-left-radius: 8px;
+    }
+    .bubble.user {
+      background: var(--surface);
+      color: var(--ink);
+      border: 1px solid var(--line);
+      border-bottom-right-radius: 8px;
+    }
+    .bubble-label {
+      font-size: .66rem;
+      color: rgba(255,255,255,.56);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      margin-bottom: 4px;
+    }
+    .bubble.user .bubble-label { color: var(--muted); }
+    .heard-card {
+      width: min(100%, 920px);
+      margin: 0 auto 10px;
+      padding: 0 14px;
+    }
+    .heard-inner {
+      background: var(--lavender-soft);
+      color: var(--lavender);
+      border: 1px solid rgba(104,99,238,.14);
+      border-radius: 20px;
+      padding: 10px 14px;
+      font-weight: 900;
+      line-height: 1.35;
+    }
+    .voice-panel {
+      background: var(--surface);
+      border-top: 1px solid var(--line);
+      padding: 14px 14px max(18px, env(safe-area-inset-bottom));
+    }
+    .voice-inner {
+      width: min(100%, 920px);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      align-items: end;
+    }
+    .tutor-tools {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+    .tool-btn {
+      background: var(--lavender-soft);
+      color: var(--lavender);
+      border-radius: var(--pill);
+      padding: 8px 12px;
+      font-weight: 900;
+      font-size: .82rem;
+    }
+    .tip {
+      background: var(--peach);
+      color: var(--peach-ink);
+      border-radius: 18px;
+      padding: 10px 12px;
+      font-size: .86rem;
+      font-weight: 800;
+      line-height: 1.35;
+      margin-bottom: 10px;
+    }
+    .save-pills {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .save-pill {
+      border-radius: var(--pill);
+      background: var(--mint);
+      color: var(--mint-ink);
+      padding: 8px 11px;
+      font-weight: 900;
+      font-size: .8rem;
+    }
+    .reply-box {
+      min-width: 0;
+    }
+    .text-reply {
+      width: 100%;
+      min-height: 54px;
+      resize: none;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: #fbfaf7;
+      padding: 14px 16px;
+      outline: none;
+      line-height: 1.35;
+      margin-top: 10px;
+    }
+    .text-reply:focus { border-color: var(--lavender); box-shadow: 0 0 0 4px rgba(104,99,238,.1); }
+    .mic-btn {
+      width: 76px;
+      height: 76px;
+      border-radius: 28px;
+      background: var(--lavender);
+      color: #fff;
+      box-shadow: 0 8px 0 #4d49c8;
+      display: grid;
+      place-items: center;
+      font-size: 1.65rem;
+      font-weight: 900;
+    }
+    .mic-btn.listening {
+      background: var(--danger);
+      box-shadow: 0 8px 0 #aa3341;
+      animation: pulse 1.1s ease infinite;
+    }
+    .mic-btn.busy {
+      background: var(--charcoal);
+      box-shadow: 0 8px 0 #1f2028;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.04); }
+    }
+    .status-line {
+      color: var(--muted);
+      font-size: .78rem;
+      font-weight: 900;
+      margin-top: 8px;
+      min-height: 1.2em;
+    }
+
+    .ready-card {
+      padding: 18px;
+    }
+    .ready-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 12px;
+    }
+    .ready-name {
+      font-weight: 900;
+      font-size: 1.08rem;
+    }
+    .readiness-track {
+      height: 10px;
+      border-radius: var(--pill);
+      background: #ece8dc;
+      overflow: hidden;
+    }
+    .readiness-fill {
+      height: 100%;
+      width: var(--ready);
+      background: linear-gradient(90deg, var(--mint-ink), var(--lavender));
+      border-radius: var(--pill);
+    }
+    .settings-card {
+      padding: 18px;
+      margin-bottom: 14px;
+    }
+    .settings-input {
+      width: 100%;
+      min-height: 52px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 0 14px;
+      margin-top: 8px;
+      background: #fbfaf7;
+      outline: none;
+    }
+    .danger-btn {
+      min-height: 50px;
+      border-radius: 18px;
+      padding: 0 16px;
+      background: #fee7eb;
+      color: #b63c4b;
+      font-weight: 900;
+      width: 100%;
+      text-align: left;
+    }
+
+    .drill-options {
+      display: grid;
+      gap: 10px;
+      margin-top: 16px;
+    }
+    .option-btn {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      min-height: 56px;
+      padding: 12px 14px;
+      text-align: left;
+      font-weight: 900;
+      color: var(--ink);
+    }
+    .feedback {
+      border-radius: 18px;
+      margin-top: 14px;
+      padding: 12px 14px;
+      font-weight: 800;
+      line-height: 1.35;
+      background: var(--lavender-soft);
+      color: var(--lavender);
+    }
+
+    @media (min-width: 760px) {
+      #app { padding-top: 32px; }
+      .home-layout {
+        display: grid;
+        grid-template-columns: minmax(360px, 480px) minmax(280px, 1fr);
+        gap: 24px;
+        align-items: start;
+      }
+      .today-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .task-card { min-height: 166px; }
+      .deck-layout {
+        display: grid;
+        grid-template-columns: minmax(340px, 520px) minmax(280px, 1fr);
+        gap: 20px;
+        align-items: start;
+      }
+      .phrase-card { min-height: 470px; }
+      .voice-inner { grid-template-columns: 1fr 92px; }
+    }
+  </style>
+</head>
+<body>
+  <div id="app"></div>
+  <script>
+    const PHRASE_SEEDS = [
+      { id:'cafezinho', pt:'cafezinho', en:'little coffee', phonetic:"ka-fei-ZI-nyu", type:'word', category:'food', tags:['cafe','daily'], register:'neutral', example_pt:'Vou tomar um cafezinho agora.', example_en:"I'm going to have a little coffee now.", usage_note:'Very common for a small coffee or a quick coffee break.', due:'2026-05-07', interval:1, times_seen:0 },
+      { id:'por-favor', pt:'por favor', en:'please', phonetic:'por fa-VOR', type:'phrase', category:'politeness', tags:['basics'], register:'neutral', example_pt:'Um suco de laranja, por favor.', example_en:'An orange juice, please.', usage_note:'Softens requests in cafes, shops, and class.', due:'2026-05-07', interval:1, times_seen:0 },
+      { id:'a-conta', pt:'a conta', en:'the bill', phonetic:'a KON-ta', type:'phrase', category:'restaurant', tags:['cafe'], register:'neutral', example_pt:'Pode trazer a conta?', example_en:'Can you bring the bill?', usage_note:'Use at restaurants when you are ready to pay.', due:'2026-05-07', interval:1, times_seen:0 },
+      { id:'cardapio', pt:'cardápio', en:'menu', phonetic:'kar-DA-piu', type:'word', category:'restaurant', tags:['cafe'], register:'neutral', example_pt:'Posso ver o cardápio?', example_en:'Can I see the menu?', usage_note:'Some casual places also say menu.', due:'2026-05-07', interval:1, times_seen:0 },
+      { id:'bora', pt:'Bora!', en:"Let's go!", phonetic:'BO-ra', type:'slang', category:'social', tags:['slang','friends'], register:'slang', example_pt:'Bora para a praia?', example_en:'Shall we go to the beach?', usage_note:'Casual and friendly. Great with classmates or friends.', due:'2026-05-07', interval:1, times_seen:0 },
+      { id:'ta-ligado', pt:'Tá ligado?', en:'You know what I mean?', phonetic:'ta li-GA-du', type:'slang', category:'social', tags:['slang','listening'], register:'slang', example_pt:'A aula é cedo, tá ligado?', example_en:'Class is early, you know?', usage_note:'Very casual. Better with friends than professors.', due:'2026-05-07', interval:1, times_seen:0 },
+      { id:'de-boa', pt:'Tô de boa.', en:"I'm good / I'm chilling.", phonetic:'to dji BO-a', type:'slang', category:'social', tags:['slang','feelings'], register:'casual', example_pt:'Não precisa, tô de boa.', example_en:"No need, I'm good.", usage_note:'Useful when declining help or saying you are relaxed.', due:'2026-05-07', interval:1, times_seen:0 },
+      { id:'que-massa', pt:'Que massa!', en:'How cool!', phonetic:'ke MA-sa', type:'slang', category:'reaction', tags:['slang'], register:'casual', example_pt:'Você vai para o Rio? Que massa!', example_en:"You're going to Rio? That's so cool!", usage_note:'Friendly reaction. Also heard outside Rio.', due:'2026-05-07', interval:1, times_seen:0 },
+      { id:'onde-fica', pt:'Onde fica...?', en:'Where is...?', phonetic:'ON-dji FI-ka', type:'phrase', category:'directions', tags:['transport'], register:'neutral', example_pt:'Onde fica o ponto de ônibus?', example_en:'Where is the bus stop?', usage_note:'Essential for navigation.', due:'2026-05-07', interval:1, times_seen:0 },
+      { id:'pode-repetir', pt:'Pode repetir?', en:'Can you repeat?', phonetic:'PO-dji he-pe-TCHIR', type:'phrase', category:'class', tags:['class','listening'], register:'neutral', example_pt:'Desculpa, pode repetir?', example_en:'Sorry, can you repeat?', usage_note:'Use this constantly. It is practical, polite, and normal.', due:'2026-05-07', interval:1, times_seen:0 },
+      { id:'mais-devagar', pt:'Mais devagar, por favor.', en:'Slower, please.', phonetic:'mais de-va-GAR', type:'phrase', category:'class', tags:['listening'], register:'neutral', example_pt:'Pode falar mais devagar, por favor?', example_en:'Can you speak more slowly, please?', usage_note:'A survival phrase for fast Rio conversations.', due:'2026-05-07', interval:1, times_seen:0 },
+      { id:'pix', pt:'Aceita Pix?', en:'Do you accept Pix?', phonetic:'a-SEI-ta piks', type:'phrase', category:'money', tags:['shopping'], register:'neutral', example_pt:'Aceita Pix ou cartão?', example_en:'Do you accept Pix or card?', usage_note:'Pix is the common Brazilian instant payment system.', due:'2026-05-07', interval:1, times_seen:0 }
+    ];
+
+    const SCENARIOS = [
+      { id:'cafe', icon:'☕', title:'Order at a cafe', pt:'Pedir no café', area:'food', minutes:6, starter:'Olá! O que você gostaria de pedir?', readiness:68 },
+      { id:'uber', icon:'🚗', title:'Take an Uber', pt:'Pegar um Uber', area:'transport', minutes:5, starter:'Oi! Qual é o destino?', readiness:42 },
+      { id:'praia', icon:'🏖️', title:'Beach small talk', pt:'Na praia', area:'social', minutes:7, starter:'E aí! Você vem sempre aqui na praia?', readiness:35 },
+      { id:'puc', icon:'🎓', title:'Class and campus', pt:'Na PUC-Rio', area:'class', minutes:6, starter:'Oi! Você está em qual matéria?', readiness:50 },
+      { id:'mercado', icon:'🛒', title:'Market run', pt:'No mercado', area:'shopping', minutes:6, starter:'Boa tarde! Você precisa de ajuda?', readiness:46 },
+      { id:'admin', icon:'🗂️', title:'University admin', pt:'Resolver burocracia', area:'admin', minutes:8, starter:'Olá, você tem algum documento?', readiness:24 }
+    ];
+
+    const DRILLS = [
+      { type:'mc', prompt:'What does "Bora!" usually mean?', options:['Sorry','Let us go','The bill','Good morning'], correct:1, feedback:'Bora is a casual invitation: let us go.' },
+      { type:'mc', prompt:'Which phrase asks someone to repeat?', options:['Aceita Pix?','Pode repetir?','Tô de boa.','Que massa!'], correct:1, feedback:'Pode repetir? is a polite way to ask for repetition.' },
+      { type:'translate', prompt:'Translate: "Pode falar mais devagar, por favor."', feedback:'Meaning: Can you speak more slowly, please?' }
+    ];
+
+    const DEFAULT_USER = {
+      name: 'Zac',
+      readiness_goals: { cafe:68, uber:42, praia:35, puc:50, mercado:46, admin:24 },
+      completed_scenarios: [],
+      phrase_reviews: {},
+      speaking_sessions: 0,
+      weak_tags: ['listening', 'class']
+    };
+
+    const S = {
+      screen: 'home',
+      user: JSON.parse(JSON.stringify(DEFAULT_USER)),
+      phraseDeck: PHRASE_SEEDS.map(p => ({ ...p })),
+      deck: { index:0, filter:'all', built:[] },
+      drill: { index:0, checked:false, selected:null, answer:'', result:null, feedback:'' },
+      settings: { apiKey:'', saveStatus:'' },
+      speaking: {
+        scenario:null,
+        messages:[],
+        listening:false,
+        busy:false,
+        heardText:'',
+        draft:'',
+        status:'Ready for voice practice',
+        correction:'Answer naturally in Portuguese. Short phrases are enough.',
+        vocab:[],
+        turn:1,
+        complete:false,
+        latestTutor:''
+      }
+    };
+
+    let activeRecognition = null;
+
+    function cloneDefaultUser() {
+      return JSON.parse(JSON.stringify(DEFAULT_USER));
+    }
+
+    function safeUser(input) {
+      const base = cloneDefaultUser();
+      const next = input || {};
+      return {
+        ...base,
+        name: next.name || base.name,
+        readiness_goals: { ...base.readiness_goals, ...(next.readiness_goals || {}) },
+        completed_scenarios: Array.isArray(next.completed_scenarios) ? next.completed_scenarios : base.completed_scenarios,
+        phrase_reviews: next.phrase_reviews && typeof next.phrase_reviews === 'object' ? next.phrase_reviews : base.phrase_reviews,
+        speaking_sessions: Number.isFinite(next.speaking_sessions) ? next.speaking_sessions : base.speaking_sessions,
+        weak_tags: Array.isArray(next.weak_tags) ? next.weak_tags : base.weak_tags
+      };
+    }
+
+    function apiHeaders() {
+      const key = S.settings.apiKey || localStorage.getItem('fr_v2_apikey') || localStorage.getItem('fr_v1_apikey') || '';
+      return { 'Content-Type': 'application/json', ...(key ? { 'X-API-Key': key } : {}) };
+    }
+
+    function escapeHtml(value) {
+      return String(value ?? '').replace(/[&<>"']/g, ch => ({
+        '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;'
+      }[ch]));
+    }
+
+    function jsString(value) {
+      return String(value ?? '').replace(/\\/g, '\\\\').replace(/'/g, "\\'").replace(/\n/g, '\\n').replace(/\r/g, '');
+    }
+
+    function save() {
+      const payload = { user: S.user, phraseDeck: S.phraseDeck };
+      try { localStorage.setItem('fr_v2_state', JSON.stringify(payload)); } catch (e) {}
+      fetch('/api/state', { method:'POST', headers:apiHeaders(), body:JSON.stringify(payload) }).catch(() => {});
+    }
+
+    function load() {
+      try {
+        const raw = localStorage.getItem('fr_v2_state') || localStorage.getItem('fr_v1_state');
+        if (raw) {
+          const data = JSON.parse(raw);
+          S.user = safeUser(data.user);
+          if (Array.isArray(data.phraseDeck)) S.phraseDeck = mergePhraseDeck(data.phraseDeck);
+        }
+        const key = localStorage.getItem('fr_v2_apikey') || localStorage.getItem('fr_v1_apikey');
+        if (key) S.settings.apiKey = key;
+      } catch (e) {}
+      fetch('/api/state', { headers:apiHeaders() })
+        .then(r => r.ok ? r.json() : null)
+        .then(data => {
+          if (!data) return;
+          if (data.user) S.user = safeUser(data.user);
+          if (Array.isArray(data.phraseDeck)) S.phraseDeck = mergePhraseDeck(data.phraseDeck);
+          render();
+        })
+        .catch(() => {});
+    }
+
+    function mergePhraseDeck(items) {
+      const map = new Map(PHRASE_SEEDS.map(item => [item.id, { ...item }]));
+      items.forEach(item => {
+        if (!item || !item.pt) return;
+        const id = item.id || item.pt.toLowerCase().replace(/[^\w]+/g, '-');
+        map.set(id, { ...map.get(id), ...item, id });
+      });
+      return [...map.values()];
+    }
+
+    function saveApiKey(value) {
+      S.settings.apiKey = value.trim();
+      try { localStorage.setItem('fr_v2_apikey', S.settings.apiKey); } catch (e) {}
+      fetch('/api/config', { method:'POST', headers:{ 'Content-Type':'application/json' }, body:JSON.stringify({ api_key:S.settings.apiKey }) }).catch(() => {});
+      S.settings.saveStatus = 'saved';
+      render();
+      setTimeout(() => { S.settings.saveStatus = ''; render(); }, 1600);
+    }
+
+    function resetReadiness() {
+      if (!confirm('Reset your readiness data and phrase review history?')) return;
+      S.user = cloneDefaultUser();
+      S.phraseDeck = PHRASE_SEEDS.map(p => ({ ...p }));
+      S.deck.index = 0;
+      save();
+      go('home');
+    }
+
+    function go(screen) {
+      if (activeRecognition) {
+        try { activeRecognition.stop(); } catch (e) {}
+        activeRecognition = null;
+      }
+      S.speaking.listening = false;
+      S.screen = screen;
+      document.getElementById('app').className = screen === 'speaking' ? 'fullscreen' : '';
+      render();
+      window.scrollTo(0, 0);
+    }
+
+    function nav() {
+      const items = [
+        { id:'home', icon:'⌂', label:'Home' },
+        { id:'scenarios', icon:'◉', label:'Speak' },
+        { id:'deck', icon:'▣', label:'Phrases' },
+        { id:'readiness', icon:'◇', label:'Ready' }
+      ];
+      if (['speaking'].includes(S.screen)) return '';
+      return `<nav class="nav" aria-label="Primary navigation">
+        ${items.map(item => `<button class="nav-btn ${S.screen === item.id ? 'active' : ''}" onclick="go('${item.id}')"><span>${item.icon}</span>${item.label}</button>`).join('')}
+      </nav>`;
+    }
+
+    function render() {
+      const app = document.getElementById('app');
+      const screens = {
+        home: renderHome,
+        scenarios: renderScenarios,
+        speaking: renderSpeaking,
+        deck: renderDeck,
+        drill: renderDrill,
+        readiness: renderReadiness,
+        settings: renderSettings
+      };
+      app.innerHTML = `<div class="screen">${(screens[S.screen] || renderHome)()}</div>${nav()}`;
+      if (S.screen === 'speaking') {
+        const chat = document.getElementById('chat');
+        if (chat) requestAnimationFrame(() => { chat.scrollTop = chat.scrollHeight; });
+      }
+    }
+
+    function homeReadiness() {
+      const scores = Object.values(S.user.readiness_goals || {});
+      return Math.round(scores.reduce((sum, score) => sum + score, 0) / scores.length);
+    }
+
+    function duePhraseCount() {
+      return S.phraseDeck.filter(p => (S.user.phrase_reviews[p.id]?.confidence || 'new') !== 'worked').length;
+    }
+
+    function renderHome() {
+      const next = SCENARIOS.find(s => !S.user.completed_scenarios.includes(s.id)) || SCENARIOS[0];
+      const ready = homeReadiness();
+      return `<main class="wide-shell">
+        <div class="topbar">
+          <div class="brand">
+            <div class="brand-mark">BR</div>
+            <div>
+              <div class="eyebrow">Rio exchange coach</div>
+              <div class="brand-title">Fala Rio</div>
+            </div>
+          </div>
+          <button class="icon-btn" onclick="go('settings')" aria-label="Settings">⚙</button>
+        </div>
+
+        <div class="home-layout">
+          <section>
+            <h1 class="title">Make today useful in Portuguese.</h1>
+            <p class="subtitle">Short voice practice, phrases you will actually say, and readiness for real Rio situations.</p>
+
+            <div class="continue-card" style="margin-top:22px">
+              <div class="continue-top">
+                <div>
+                  <div class="tiny-pill">Pick up where you left off</div>
+                  <h2 class="continue-title">${escapeHtml(next.title)}</h2>
+                  <p class="continue-copy">${escapeHtml(next.pt)} · ${next.minutes} minute voice loop</p>
+                </div>
+                <div class="meter-ring" style="--pct:${ready}%"><span>${ready}%</span></div>
+              </div>
+              <div class="continue-art">RIO<br>PORTUGUÊS</div>
+              <button class="primary-btn full" onclick="pickScenario('${next.id}')">Start speaking <span>→</span></button>
+            </div>
+          </section>
+
+          <section>
+            <div class="section-label">Today's plan</div>
+            <div class="today-grid">
+              <button class="task-card mint" onclick="pickScenario('${next.id}')">
+                <div>
+                  <div class="task-icon">🎙</div>
+                  <h3>Speak back and forth</h3>
+                  <p>Practice the next Rio situation out loud.</p>
+                </div>
+              </button>
+              <button class="task-card peach" onclick="go('deck')">
+                <div>
+                  <div class="task-icon">▣</div>
+                  <h3>Review phrase deck</h3>
+                  <p>${duePhraseCount()} words, phrases, and slang items.</p>
+                </div>
+              </button>
+              <button class="task-card blue" onclick="go('drill')">
+                <div>
+                  <div class="task-icon">✎</div>
+                  <h3>Class drill</h3>
+                  <p>Quick checks for class and listening weak spots.</p>
+                </div>
+              </button>
+              <button class="task-card rose" onclick="go('readiness')">
+                <div>
+                  <div class="task-icon">◇</div>
+                  <h3>Rio Readiness</h3>
+                  <p>See what situations feel ready and what needs work.</p>
+                </div>
+              </button>
+            </div>
+
+            <div class="section-label">Saved from conversations</div>
+            <div class="saved-list">
+              ${S.phraseDeck.slice(-3).reverse().map(p => renderPhraseRow(p)).join('')}
+            </div>
+          </section>
+        </div>
+      </main>`;
+    }
+
+    function renderPhraseRow(p) {
+      return `<div class="row-card card">
+        <div class="row-icon">${p.type === 'slang' ? '🤙' : p.type === 'phrase' ? '“”' : 'Aa'}</div>
+        <div class="row-body">
+          <div class="row-title">${escapeHtml(p.pt)}</div>
+          <div class="row-sub">${escapeHtml(p.en)} · ${escapeHtml(p.register || 'neutral')}</div>
+        </div>
+        <div class="row-meta">${escapeHtml(p.category || 'daily')}</div>
+      </div>`;
+    }
+
+    function renderScenarios() {
+      return `<main class="shell">
+        <div class="topbar">
+          <div>
+            <div class="eyebrow">Voice practice</div>
+            <div class="brand-title">Choose a Rio situation</div>
+          </div>
+          <button class="icon-btn" onclick="go('settings')" aria-label="Settings">⚙</button>
+        </div>
+        <div class="scenario-list">
+          ${SCENARIOS.map(s => `<button class="row-card card" onclick="pickScenario('${s.id}')">
+            <div class="row-icon">${s.icon}</div>
+            <div class="row-body">
+              <div class="row-title">${escapeHtml(s.title)}</div>
+              <div class="row-sub">${escapeHtml(s.pt)} · ${s.minutes} minute voice loop</div>
+            </div>
+            <div class="row-meta">${S.user.readiness_goals[s.id] || s.readiness}%</div>
+          </button>`).join('')}
+        </div>
+      </main>`;
+    }
+
+    function pickScenario(id) {
+      const scenario = SCENARIOS.find(s => s.id === id) || SCENARIOS[0];
+      S.speaking = {
+        scenario,
+        messages:[{ role:'tutor', text:scenario.starter }],
+        listening:false,
+        busy:false,
+        heardText:'',
+        draft:'',
+        status:'Tap the mic and answer in Portuguese',
+        correction:'You can answer with one simple sentence.',
+        vocab:[],
+        turn:1,
+        complete:false,
+        latestTutor:scenario.starter
+      };
+      S.screen = 'speaking';
+      document.getElementById('app').className = 'fullscreen';
+      render();
+      speakPortuguese(scenario.starter);
+    }
+
+    function renderSpeaking() {
+      const scenario = S.speaking.scenario || SCENARIOS[0];
+      const state = S.speaking.busy ? 'Tutor thinking...' : S.speaking.listening ? 'Listening in Portuguese...' : S.speaking.status;
+      return `<main class="speaking-wrap">
+        <header class="speaking-top">
+          <div class="speaking-head">
+            <button class="back-btn" onclick="go('scenarios')" aria-label="Back">←</button>
+            <div>
+              <div class="speaking-title">${scenario.icon} ${escapeHtml(scenario.title)}</div>
+              <div class="listen-state">${escapeHtml(state)}</div>
+            </div>
+            <button class="back-btn" onclick="go('home')" aria-label="Home">⌂</button>
+          </div>
+        </header>
+
+        <section class="chat" id="chat">
+          ${S.speaking.messages.map(m => `<div class="bubble-row ${m.role}">
+            <div class="bubble ${m.role}">
+              <div class="bubble-label">${m.role === 'tutor' ? 'Tutor' : 'You'}</div>
+              ${escapeHtml(m.text)}
+            </div>
+          </div>`).join('')}
+        </section>
+
+        ${S.speaking.heardText ? `<div class="heard-card"><div class="heard-inner">I heard: ${escapeHtml(S.speaking.heardText)}</div></div>` : ''}
+
+        <footer class="voice-panel">
+          <div class="voice-inner">
+            <div class="reply-box">
+              <div class="tutor-tools">
+                <button class="tool-btn" onclick="speakPortuguese(S.speaking.latestTutor)">Replay</button>
+                <button class="tool-btn" onclick="speakPortuguese(S.speaking.latestTutor, .72)">Slower</button>
+                <button class="tool-btn" onclick="sendTypedReply()">Send typed fallback</button>
+              </div>
+              <div class="tip">${escapeHtml(S.speaking.correction || 'Keep going in Portuguese.')}</div>
+              <div class="save-pills">
+                ${(S.speaking.vocab || []).map((p, i) => `<button class="save-pill" onclick="savePhraseFromTutor(${i})">+ ${escapeHtml(p.pt)} · ${escapeHtml(p.en || '')}</button>`).join('')}
+              </div>
+              <textarea class="text-reply" placeholder="Fallback: type your Portuguese reply here if the mic is blocked..." oninput="S.speaking.draft=this.value">${escapeHtml(S.speaking.draft)}</textarea>
+              <div class="status-line">${escapeHtml(S.speaking.status)}</div>
+            </div>
+            <button class="mic-btn ${S.speaking.listening ? 'listening' : ''} ${S.speaking.busy ? 'busy' : ''}" onclick="toggleMic()" aria-label="Start or stop microphone">${S.speaking.busy ? '…' : S.speaking.listening ? '■' : '🎙'}</button>
+          </div>
+        </footer>
+      </main>`;
+    }
+
+    function toggleMic() {
+      if (S.speaking.busy) return;
+      if (S.speaking.listening && activeRecognition) {
+        activeRecognition.stop();
+        S.speaking.listening = false;
+        S.speaking.status = 'Stopped listening';
+        render();
+        return;
+      }
+      const Recognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+      if (!Recognition) {
+        S.speaking.status = 'This browser cannot use speech recognition. Try Chrome or Safari, or use the typed fallback.';
+        render();
+        return;
+      }
+      const recognition = new Recognition();
+      activeRecognition = recognition;
+      recognition.lang = 'pt-BR';
+      recognition.continuous = false;
+      recognition.interimResults = true;
+      recognition.maxAlternatives = 1;
+      S.speaking.listening = true;
+      S.speaking.heardText = '';
+      S.speaking.status = 'Listening... speak Portuguese now';
+      render();
+
+      recognition.onresult = event => {
+        let interim = '';
+        let finalText = '';
+        for (let i = event.resultIndex; i < event.results.length; i++) {
+          const transcript = event.results[i][0].transcript.trim();
+          if (event.results[i].isFinal) finalText += transcript + ' ';
+          else interim += transcript + ' ';
+        }
+        S.speaking.heardText = (finalText || interim).trim();
+        render();
+        if (finalText.trim()) {
+          S.speaking.listening = false;
+          activeRecognition = null;
+          sendTutorTurn(finalText.trim());
+        }
+      };
+      recognition.onerror = event => {
+        S.speaking.listening = false;
+        activeRecognition = null;
+        const guidance = event.error === 'not-allowed' || event.error === 'service-not-allowed'
+          ? 'Microphone permission is blocked. Allow the mic in your browser settings, then retry.'
+          : `Microphone problem: ${event.error}. Retry, or use the typed fallback.`;
+        S.speaking.status = guidance;
+        render();
+      };
+      recognition.onend = () => {
+        if (S.speaking.listening) {
+          S.speaking.listening = false;
+          S.speaking.status = S.speaking.heardText ? 'Tap the mic again if that was not final.' : 'No speech captured. Try again close to the mic.';
+          render();
+        }
+        activeRecognition = null;
+      };
+      try { recognition.start(); }
+      catch (err) {
+        S.speaking.listening = false;
+        S.speaking.status = 'Could not start the microphone. Check permissions and retry.';
+        activeRecognition = null;
+        render();
+      }
+    }
+
+    function speakPortuguese(text, rate = .95) {
+      if (!text || !window.speechSynthesis) return;
+      window.speechSynthesis.cancel();
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = 'pt-BR';
+      utterance.rate = rate;
+      window.speechSynthesis.speak(utterance);
+    }
+
+    function sendTypedReply() {
+      const text = (S.speaking.draft || '').trim();
+      if (text.length < 2 || S.speaking.busy) return;
+      S.speaking.draft = '';
+      S.speaking.heardText = text;
+      sendTutorTurn(text);
+    }
+
+    async function sendTutorTurn(text) {
+      const scenario = S.speaking.scenario || SCENARIOS[0];
+      S.speaking.messages.push({ role:'user', text });
+      S.speaking.busy = true;
+      S.speaking.status = 'Tutor is preparing a reply...';
+      render();
+      try {
+        const history = S.speaking.messages
+          .slice(0, -1)
+          .map(m => ({ role:m.role === 'tutor' ? 'assistant' : 'user', content:m.text }));
+        const response = await fetch('/api/tutor', {
+          method:'POST',
+          headers:apiHeaders(),
+          body:JSON.stringify({ history, message:text, scenario:scenario.id, turn:S.speaking.turn })
+        });
+        if (!response.ok) throw new Error(await response.text());
+        const reader = response.body.getReader();
+        const decoder = new TextDecoder();
+        let fullText = '';
+        while (true) {
+          const { value, done } = await reader.read();
+          if (done) break;
+          fullText += decoder.decode(value, { stream:true });
+        }
+        fullText += decoder.decode();
+        const [replyRaw, metaRaw = '{}'] = fullText.split('<<<META>>>');
+        let meta = {};
+        try { meta = JSON.parse(metaRaw.trim() || '{}'); } catch (e) {}
+        const reply = replyRaw.trim() || 'Pode repetir, por favor?';
+        S.speaking.latestTutor = reply;
+        S.speaking.messages.push({ role:'tutor', text:reply });
+        S.speaking.correction = meta.correction || 'Good. Keep your answer short and natural.';
+        S.speaking.vocab = Array.isArray(meta.vocab) ? meta.vocab.slice(0, 3) : [];
+        S.speaking.complete = !!meta.scenario_complete;
+        S.speaking.turn += 1;
+        S.speaking.status = S.speaking.complete ? 'Scenario complete. Nice work.' : 'Tap the mic to answer again';
+        if (S.speaking.complete && !S.user.completed_scenarios.includes(scenario.id)) S.user.completed_scenarios.push(scenario.id);
+        S.user.speaking_sessions += 1;
+        bumpReadiness(scenario.id, S.speaking.complete ? 10 : 4);
+        save();
+        speakPortuguese(reply);
+      } catch (err) {
+        S.speaking.status = err.message || 'The tutor could not reply. Check your API key and try again.';
+      } finally {
+        S.speaking.busy = false;
+        render();
+      }
+    }
+
+    function bumpReadiness(id, amount) {
+      const current = S.user.readiness_goals[id] || 0;
+      S.user.readiness_goals[id] = Math.min(100, current + amount);
+    }
+
+    function savePhraseFromTutor(index) {
+      const item = S.speaking.vocab[index];
+      if (!item || !item.pt) return;
+      const id = item.pt.toLowerCase().replace(/[^\w]+/g, '-');
+      const exists = S.phraseDeck.some(p => p.id === id);
+      if (!exists) {
+        S.phraseDeck.push({
+          id,
+          pt:item.pt,
+          en:item.en || '',
+          phonetic:item.phonetic || '',
+          type:item.type || 'phrase',
+          category:S.speaking.scenario?.area || 'conversation',
+          tags:[S.speaking.scenario?.area || 'conversation'],
+          register:item.register || 'casual',
+          example_pt:S.speaking.latestTutor,
+          example_en:'',
+          usage_note:item.usage_note || 'Saved from a tutor conversation.',
+          due:'2026-05-07',
+          interval:1,
+          times_seen:0
+        });
+      }
+      S.speaking.status = exists ? 'Already in your phrase deck.' : 'Saved to your phrase deck.';
+      save();
+      render();
+    }
+
+    function filteredDeck() {
+      if (S.deck.filter === 'all') return S.phraseDeck;
+      return S.phraseDeck.filter(p => p.type === S.deck.filter || p.tags.includes(S.deck.filter));
+    }
+
+    function renderDeck() {
+      const deck = filteredDeck();
+      const item = deck[S.deck.index % deck.length] || PHRASE_SEEDS[0];
+      const review = S.user.phrase_reviews[item.id] || {};
+      const tokens = item.example_en ? item.example_en.split(/\s+/).slice(0, 7) : [item.en, item.pt, 'Rio', 'practice'].filter(Boolean);
+      return `<main class="wide-shell">
+        <div class="deck-header">
+          <div>
+            <div class="eyebrow">Unified phrase deck</div>
+            <div class="brand-title">Words, phrases, and slang</div>
+          </div>
+          <button class="icon-btn" onclick="go('settings')" aria-label="Settings">⚙</button>
+        </div>
+        <div class="deck-layout">
+          <section>
+            <div class="phrase-card card">
+              <div>
+                <span class="chip ${item.type === 'slang' ? 'peach' : item.type === 'phrase' ? 'mint' : 'blue'}">${escapeHtml(item.type)} · ${escapeHtml(item.register)}</span>
+                <h1 class="phrase-word">${escapeHtml(item.pt)}</h1>
+                <div class="phrase-meaning">${escapeHtml(item.en)}</div>
+              </div>
+              <button class="pron-row" onclick="speakPortuguese('${jsString(item.pt)}')">
+                <span>Pronunciation</span><span>${escapeHtml(item.phonetic || 'pt-BR')}</span><span>🔊</span>
+              </button>
+              <div class="sentence-box">
+                <div>
+                  <strong>${escapeHtml(item.example_pt)}</strong><br>
+                  <span>${escapeHtml(item.example_en || item.usage_note)}</span>
+                </div>
+              </div>
+              <div class="phrase-bank">
+                ${tokens.map(t => `<span class="bank-token">${escapeHtml(t)}</span>`).join('')}
+              </div>
+            </div>
+            <div class="phrase-actions">
+              <button class="secondary-btn" onclick="reviewPhrase('${item.id}', 'needs_work')">Needs work</button>
+              <button class="primary-btn" onclick="reviewPhrase('${item.id}', 'worked')">Feels useful</button>
+            </div>
+          </section>
+          <aside>
+            <div class="section-label">Filters</div>
+            <div class="today-grid" style="grid-template-columns:1fr 1fr;margin-bottom:16px">
+              ${['all','word','phrase','slang'].map(f => `<button class="ghost-btn" onclick="setDeckFilter('${f}')">${f}</button>`).join('')}
+            </div>
+            <div class="section-label">Usage note</div>
+            <div class="card" style="padding:18px;line-height:1.42;color:var(--muted);font-weight:800">
+              ${escapeHtml(item.usage_note || 'Useful in everyday Rio conversations.')}
+              <br><br><span class="chip">${escapeHtml(review.confidence || 'new')}</span>
+            </div>
+          </aside>
+        </div>
+      </main>`;
+    }
+
+    function setDeckFilter(filter) {
+      S.deck.filter = filter;
+      S.deck.index = 0;
+      render();
+    }
+
+    function reviewPhrase(id, confidence) {
+      const item = S.phraseDeck.find(p => p.id === id);
+      if (item) {
+        item.times_seen = (item.times_seen || 0) + 1;
+        item.interval = confidence === 'worked' ? Math.min(14, (item.interval || 1) + 2) : 1;
+      }
+      S.user.phrase_reviews[id] = { confidence, reviewed_at:new Date().toISOString() };
+      S.deck.index += 1;
+      save();
+      render();
+    }
+
+    function renderDrill() {
+      const q = DRILLS[S.drill.index % DRILLS.length];
+      return `<main class="shell">
+        <div class="simple-header">
+          <button class="back-btn" onclick="go('home')">←</button>
+          <div>
+            <div class="eyebrow">Class drill</div>
+            <div class="brand-title">Quick check</div>
+          </div>
+          <div></div>
+        </div>
+        <section class="phrase-card card" style="text-align:left;min-height:auto">
+          <span class="chip">${q.type === 'translate' ? 'translation' : 'multiple choice'}</span>
+          <h1 class="brand-title" style="font-size:1.7rem;line-height:1.1">${escapeHtml(q.prompt)}</h1>
+          ${q.type === 'mc' ? `<div class="drill-options">
+            ${q.options.map((option, i) => `<button class="option-btn" onclick="checkDrill(${i})">${'ABCD'[i]} · ${escapeHtml(option)}</button>`).join('')}
+          </div>` : `<textarea class="text-reply" placeholder="Type the English meaning..." oninput="S.drill.answer=this.value">${escapeHtml(S.drill.answer)}</textarea>
+            <button class="primary-btn full" onclick="checkTranslationDrill()" style="margin-top:12px">Check with tutor</button>`}
+          ${S.drill.feedback ? `<div class="feedback">${escapeHtml(S.drill.feedback)}</div><button class="secondary-btn full" onclick="nextDrill()" style="margin-top:12px">Next check</button>` : ''}
+        </section>
+      </main>`;
+    }
+
+    function checkDrill(index) {
+      const q = DRILLS[S.drill.index % DRILLS.length];
+      S.drill.feedback = index === q.correct ? `Correct. ${q.feedback}` : `Not quite. ${q.feedback}`;
+      if (index !== q.correct) addWeakTag('class');
+      render();
+    }
+
+    async function checkTranslationDrill() {
+      const q = DRILLS[S.drill.index % DRILLS.length];
+      S.drill.feedback = 'Checking with the tutor...';
+      render();
+      try {
+        const original = (q.prompt.match(/"([^"]+)"/) || [null, q.prompt])[1];
+        const response = await fetch('/api/check-translation', {
+          method:'POST',
+          headers:apiHeaders(),
+          body:JSON.stringify({ original_pt:original, user_translation_en:S.drill.answer })
+        });
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.error || 'Could not check that answer.');
+        S.drill.feedback = data.feedback || q.feedback;
+        if (!data.correct) addWeakTag('listening');
+      } catch (err) {
+        S.drill.feedback = err.message || q.feedback;
+      }
+      render();
+    }
+
+    function nextDrill() {
+      S.drill = { index:S.drill.index + 1, checked:false, selected:null, answer:'', result:null, feedback:'' };
+      render();
+    }
+
+    function addWeakTag(tag) {
+      if (!S.user.weak_tags.includes(tag)) S.user.weak_tags.push(tag);
+      save();
+    }
+
+    function renderReadiness() {
+      return `<main class="shell">
+        <div class="topbar">
+          <div>
+            <div class="eyebrow">Rio Readiness</div>
+            <div class="brand-title">Can I handle this?</div>
+          </div>
+          <button class="icon-btn" onclick="go('settings')" aria-label="Settings">⚙</button>
+        </div>
+        <p class="subtitle" style="margin-bottom:18px">Progress here is practical: situations practiced, phrases reviewed, and weak spots noticed.</p>
+        <div class="ready-list">
+          ${SCENARIOS.map(s => {
+            const ready = S.user.readiness_goals[s.id] || s.readiness;
+            return `<section class="ready-card card">
+              <div class="ready-top">
+                <div>
+                  <div class="ready-name">${s.icon} ${escapeHtml(s.title)}</div>
+                  <div class="row-sub">${escapeHtml(s.pt)} · ${escapeHtml(s.area)}</div>
+                </div>
+                <span class="chip">${ready}% ready</span>
+              </div>
+              <div class="readiness-track"><div class="readiness-fill" style="--ready:${ready}%"></div></div>
+            </section>`;
+          }).join('')}
+        </div>
+        <div class="section-label">What to focus on</div>
+        <div class="card" style="padding:18px">
+          <div class="save-pills">${S.user.weak_tags.map(tag => `<span class="save-pill">${escapeHtml(tag)}</span>`).join('')}</div>
+        </div>
+      </main>`;
+    }
+
+    function renderSettings() {
+      const key = S.settings.apiKey || '';
+      const saved = S.settings.saveStatus === 'saved';
+      return `<main class="shell">
+        <div class="simple-header">
+          <button class="back-btn" onclick="go('home')">←</button>
+          <div>
+            <div class="eyebrow">Settings</div>
+            <div class="brand-title">Fala Rio setup</div>
+          </div>
+          <div></div>
+        </div>
+        <section class="settings-card card">
+          <label class="eyebrow" for="name-input">Your name</label>
+          <input id="name-input" class="settings-input" value="${escapeHtml(S.user.name)}" oninput="S.user.name=this.value">
+          <button class="secondary-btn full" style="margin-top:12px" onclick="save();S.settings.saveStatus='saved';render();setTimeout(()=>{S.settings.saveStatus='';render()},1400)">${saved ? 'Saved' : 'Save profile'}</button>
+        </section>
+        <section class="settings-card card">
+          <label class="eyebrow" for="api-input">Anthropic API key</label>
+          <input id="api-input" class="settings-input" type="password" placeholder="sk-ant-api03-..." value="${escapeHtml(key)}" oninput="S.settings.apiKey=this.value">
+          <button class="primary-btn full" style="margin-top:12px" onclick="saveApiKey(document.getElementById('api-input').value)">${saved ? 'Saved' : 'Save key'}</button>
+          <p class="subtitle" style="font-size:.82rem;margin-top:12px">Needed for live tutor replies. Stored locally and sent as a request header.</p>
+        </section>
+        <section class="settings-card card">
+          <div class="eyebrow">Data</div>
+          <p class="subtitle" style="margin:8px 0 14px">${S.user.speaking_sessions} voice sessions · ${Object.keys(S.user.phrase_reviews).length} reviewed phrases</p>
+          <button class="danger-btn" onclick="resetReadiness()">Reset readiness data</button>
+        </section>
+      </main>`;
+    }
+
+    load();
+    render();
+  </script>
+</body>
+</html>
