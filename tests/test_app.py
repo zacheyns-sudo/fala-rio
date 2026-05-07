@@ -98,6 +98,14 @@ class AppTestCase(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.get_json(), {})
 
+    def test_app_icon_is_served_from_assets(self):
+        response = self.client.get("/assets/fala-rio-icon.png")
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.mimetype, "image/png")
+        self.assertGreater(len(response.get_data()), 1000)
+        response.close()
+
     def test_config_stores_api_key_in_session(self):
         response = self.client.post("/api/config", json={"api_key": "sk-ant-api03-test"})
 

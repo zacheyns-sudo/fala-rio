@@ -52,6 +52,11 @@ def index():
     return send_from_directory(BASE_DIR, "index.html")
 
 
+@app.get("/assets/<path:filename>")
+def assets(filename):
+    return send_from_directory(BASE_DIR / "assets", filename)
+
+
 @app.post("/api/tutor")
 def tutor():
     api_key = resolve_api_key()
